@@ -4,7 +4,7 @@ import { BasicPackageGroup } from '../../../../core/models/packageGroup.model';
 
 @Component({
   selector: 'app-package-group-item',
-  standalone: false,
+  standalone: true,
   templateUrl: './package-group-item.html',
   styleUrl: './package-group-item.css',
 })

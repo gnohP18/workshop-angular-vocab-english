@@ -1,15 +1,13 @@
 <div class="p-3">
   <h3 class="text-xl font-semibold">Danh sách bộ gói từ mới nhất</h3>
 
-  <div *ngIf="isLoading">Đang tải dữ liệu...</div>
-
-  <div
-    *ngIf="!isLoading"
-    class="grid grid-cols-2 md:grid-cols-5 gap-2 border border-gray-200 p-2 rounded-md"
-  >
-    <app-package-group-item
-      *ngFor="let group of packageGroups"
-      [packageGroup]="group"
-    ></app-package-group-item>
-  </div>
+  @if (isLoading) {
+    <div>Đang tải dữ liệu...</div>
+  } @else {
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-2 border border-gray-200 p-2 rounded-md">
+      @for (group of packageGroups; track group.id) {
+        <app-package-group-item [packageGroup]="group" />
+      }
+    </div>
+  }
 </div>
