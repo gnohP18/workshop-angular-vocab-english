@@ -1,13 +1,42 @@
-<div class="p-3">
-  <h3 class="text-xl font-semibold">Danh sách bộ gói từ mới nhất</h3>
+<section id="welcome">
+  <app-welcome-background></app-welcome-background>
+</section>
+
+<section id="welcome_package_group" class="w-full overflow-x-hidden h-screen">
+  <h3 class="text-3xl font-bold py-5 text-center">Danh sách bộ gói từ mới nhất</h3>
 
   @if (isLoading) {
     <div>Đang tải dữ liệu...</div>
   } @else {
-    <div class="grid grid-cols-2 md:grid-cols-5 gap-2 border border-gray-200 p-2 rounded-md">
-      @for (group of packageGroups; track group.id) {
-        <app-package-group-item [packageGroup]="group" />
-      }
+    <div class="relative w-full">
+      <!-- Fade gradient bên trái -->
+      <div
+        class="pointer-events-none absolute left-0 top-0 h-full w-16 bg-linear-to-r from-white to-transparent z-10"
+      ></div>
+
+      <!-- Fade gradient bên phải -->
+      <div
+        class="pointer-events-none absolute right-0 top-0 h-full w-16 bg-linear-to-l from-white to-transparent z-10"
+      ></div>
+
+      <!-- Scroll container -->
+      <div
+        #scrollContainer
+        (scroll)="onScroll()"
+        class="flex gap-4 justify-center overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth py-2 px-1"
+      >
+        @for (group of packageGroups; track group.id) {
+          <div
+            class="snap-center shrink-0 transition-transform duration-300 ease-out"
+            [ngStyle]="{ transform: getScale(group.id) }"
+          >
+            <app-package-group-item [packageGroup]="group" />
+          </div>
+        }
+      </div>
     </div>
   }
-</div>
+</section>
+<section class="w-full overflow-x-hidden h-screen">
+  <app-register-form></app-register-form>
+</section>

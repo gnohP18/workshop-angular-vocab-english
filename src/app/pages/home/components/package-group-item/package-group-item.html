@@ -1,4 +1,4 @@
-<div
+<!-- <div
   class="relative mt-2 flex h-full w-full items-center cursor-pointer"
   (click)="goToDetail()"
 >
@@ -12,7 +12,6 @@
     </span>
   </div>
 
-  <!-- back cards -->
   <div
     class="bg-gray-50 absolute -top-2 left-[10%] flex h-full w-[80%] justify-center rounded-md border border-gray-200 duration-500"
   >
@@ -21,4 +20,12 @@
   <div
     class="bg-gray-100 absolute -top-1 left-[5%] h-full w-[90%] rounded-md border border-gray-200 duration-500"
   ></div>
+</div> -->
+<div class="h-44 w-40 rounded-2xl border flex justify-between flex-col p-2 border-gray-300 hover:shadow-md duration-400" (click)="goToDetail()">
+  <span class="font-bold w-full justify-center flex">{{ packageGroup.name }}</span>
+  <span class="flex items-center justify-center gap-2 text-sm">
+      <i class="bi bi-box"></i>
+      {{ packageGroup.numberOfPackage }} gói từ
+    </span>
+  <span class="w-full text-center text-xs text-gray-500">Nhấn vào để xem</span>
 </div>

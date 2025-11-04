@@ -65,5 +65,5 @@ ng g s core/services/folder-name/service-name
 
 ### Create an component
 ```sh
-ng g c pages/home/components/package-group-item
+ng g c pages/home/components/package-group-item --standalone --skip-import  
 ```
