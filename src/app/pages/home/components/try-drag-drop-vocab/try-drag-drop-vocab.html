@@ -1,0 +1,54 @@
+<div class="p-6 grid grid-cols-2 h-full" cdkDropListGroup>
+  <!-- LEFT: WORDS -->
+  <div class="w-full h-full border-r border-dashed border-gray-300 pr-2">
+    <div
+      class="space-y-3 h-full flex flex-col items-center"
+      cdkDropList
+      #wordList="cdkDropList"
+      [cdkDropListData]="vocabs"
+      [cdkDropListConnectedTo]="definitionListIds"
+    >
+      <h2 class="font-bold text-xl">Drag the word</h2>
+
+      @for (v of vocabs; track v.word) {
+      <div
+        cdkDrag
+        [cdkDragData]="v"
+        class="px-4 py-2 rounded-lg border border-cyan-500 cursor-move bg-white shadow hover:bg-cyan-50"
+        (cdkDragStarted)="onDragStart($event)"
+      >
+        {{ v.word }}
+      </div>
+      }
+    </div>
+  </div>
+
+  <!-- RIGHT: DEFINITIONS -->
+  <div class="space-y-3 pl-2">
+    <h2 class="font-bold text-xl">Drop into correct definition</h2>
+
+    @for (item of shuffledDefinitions; track item.word) {
+    <div
+      class="border border-dashed border-gray-300 rounded-lg p-3 bg-gray-50 relative min-h-[70px]"
+      cdkDropList
+      #defList="cdkDropList"
+      [cdkDropListConnectedTo]="[wordList]"
+      (cdkDropListDropped)="onDrop($event, item)"
+    >
+      @if (!item.placed) {
+      <div class="text-gray-500 text-sm italic">Drop word here</div>
+      }
+
+      @if (item.placed) {
+      <div
+        class="absolute inset-0 bg-green-200/70 flex items-center justify-center font-bold text-green-800 rounded-lg animate-pulse"
+      >
+        ✅ Correct!
+      </div>
+      }
+
+      <div>{{ item.definition }}</div>
+    </div>
+    }
+  </div>
+</div>

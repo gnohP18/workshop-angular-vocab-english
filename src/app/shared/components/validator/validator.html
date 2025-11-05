@@ -1,0 +1,11 @@
+<div>
+  <span class="relative">{{label}} @if(required){
+    <span class="text-red-500 absolute -top-1">&#9913;</span>
+  } </span>
+  <ng-content></ng-content>
+  @if (errorMessage) {
+    <span class="text-red-500">{{errorMessage}}</span>
+  } @else {
+    <span class="text-transparent">""</span>
+  }
+</div>

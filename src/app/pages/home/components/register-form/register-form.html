@@ -1,15 +1,15 @@
 <div class="flex min-h-screen items-center justify-center bg-gray-50 p-6">
-  <div
-    class="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg border border-gray-100"
-  >
-    <h2 class="text-2xl font-semibold text-center text-cyan-600 mb-6">
-      Đăng ký tài khoản
-    </h2>
+  <div class="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg border border-gray-100">
+    <h2 class="text-2xl font-semibold text-center text-cyan-600 mb-6">Đăng ký tài khoản</h2>
 
     <form (ngSubmit)="onSubmit()" [formGroup]="form" class="space-y-5">
       <!-- Họ -->
-      <div>
-        <label class="block text-sm font-medium text-gray-600 mb-1">Họ</label>
+      <app-validator
+        label="Họ"
+        [required]="true"
+        class="w-full"
+        [errorMessage]="errors['firstName']"
+      >
         <input
           type="text"
           name="firstName"
@@ -18,37 +18,42 @@
           placeholder="Nhập tên của bạn"
           class="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-gray-700 placeholder-gray-400 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-100 outline-none transition"
         />
-        <p>{{errors['firstName']}}</p>
-      </div>
+      </app-validator>
 
       <!-- Tên -->
-      <div>
-        <label class="block text-sm font-medium text-gray-600 mb-1">Tên</label>
+      <app-validator
+        label="Tên"
+        [required]="true"
+        class="w-full"
+        [errorMessage]="errors['lastName']"
+      >
         <input
           type="text"
           name="lastName"
           formControlName="lastName"
           required
           placeholder="Nhập họ của bạn"
-          class="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-gray-700 placeholder-gray-400 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-100 outline-none transition"
+          class="ve-input-text"
         />
-        <p>{{errors['lastName']}}</p>
-      </div>
-
+      </app-validator>
 
       <!-- Email -->
-      <div>
-        <label class="block text-sm font-medium text-gray-600 mb-1">Email</label>
+      <app-validator
+        label="Email"
+        [required]="true"
+        class="w-full"
+        [errorMessage]="errors['email']"
+      >
         <input
           type="email"
           name="email"
           formControlName="email"
           required
           placeholder="you@example.com"
-          class="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-gray-700 placeholder-gray-400 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-100 outline-none transition"
+          class="ve-input-text"
         />
-        <p>{{errors['email']}}</p>
-      </div>
+      </app-validator>
+
       <!-- Submit -->
       <button
         type="submit"
@@ -61,9 +66,7 @@
 
     <p class="mt-5 text-center text-sm text-gray-500">
       Đã có tài khoản?
-      <a href="/login" class="text-cyan-500 hover:underline font-medium"
-        >Đăng nhập</a
-      >
+      <a href="/login" class="text-cyan-500 hover:underline font-medium">Đăng nhập</a>
     </p>
   </div>
 </div>

@@ -4,6 +4,7 @@ import { BasicPackageGroup } from '../../core/models/packageGroup.model';
 import { IPackageGroupService } from '../../core/services/abstracts/package-group.abstract';
 import { PackageGroupItem } from './components/package-group-item/package-group-item';
 import { RegisterForm } from "./components/register-form/register-form";
+import { TryDragDropVocab } from "./components/try-drag-drop-vocab/try-drag-drop-vocab";
 import { WelcomeBackground } from './components/welcome-background/welcome-background';
 
 @Component({
@@ -15,7 +16,8 @@ import { WelcomeBackground } from './components/welcome-background/welcome-backg
     CommonModule,
     PackageGroupItem,
     WelcomeBackground,
-    RegisterForm
+    RegisterForm,
+    TryDragDropVocab
 ]
 })
 export class Home {

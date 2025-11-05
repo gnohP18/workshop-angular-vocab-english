@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Validator } from "../../../../shared/components/validator/validator";
 import { getError } from '../../../../shared/functions/error-function';
 
 @Component({
   selector: 'app-register-form',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, Validator],
   templateUrl: './register-form.html',
   styleUrl: './register-form.css',
 })
