@@ -5,7 +5,7 @@
 <section id="welcome_package_group" class="w-full overflow-x-hidden h-screen">
   <h3 class="text-3xl font-bold py-5 text-center">Danh sách bộ gói từ mới nhất</h3>
 
-  @if (isLoading) {
+  @if (isLoadingPg) {
     <div>Đang tải dữ liệu...</div>
   } @else {
     <div class="relative w-full">
@@ -36,10 +36,43 @@
       </div>
     </div>
   }
+  @if (isLoadingP) {
+    <div>Đang tải dữ liệu...</div>
+  } @else {
+    <div class="relative w-full">
+      <!-- Fade gradient bên trái -->
+      <div
+        class="pointer-events-none absolute left-0 top-0 h-full w-16 bg-linear-to-r from-white to-transparent z-10"
+      ></div>
+
+      <!-- Fade gradient bên phải -->
+      <div
+        class="pointer-events-none absolute right-0 top-0 h-full w-16 bg-linear-to-l from-white to-transparent z-10"
+      ></div>
+
+      <!-- Scroll container -->
+      <div
+        #scrollContainer
+        (scroll)="onScroll()"
+        class="flex gap-4 justify-center overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth py-2 px-1"
+      >
+        @for (package of packages; track package.id) {
+          <div
+            class="snap-center shrink-0 transition-transform duration-300 ease-out"
+            [ngStyle]="{ transform: getScale(package.id) }"
+          >
+            <app-package-item [package]="package" />
+          </div>
+        }
+      </div>
+    </div>
+  }
 </section>
 <section class="w-full overflow-x-hidden h-screen">
   <app-register-form></app-register-form>
 </section>
-<section class="w-full overflow-x-hidden h-screen flex items-center">
+<section class="w-full overflow-x-hidden h-screen flex flex-col items-center justify-center">
+  <span class="text-2xl font-bold py-8">Thử một vài cách học với Vocab-English</span>
   <app-try-drag-drop-vocab></app-try-drag-drop-vocab>
+  <a href="https://vocab-english.shubanoname.id.vn/guests" class="text-xl font-bold py-8 hover:text-cyan-500 duration-300">Xem thêm</a>
 </section>

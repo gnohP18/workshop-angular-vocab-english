@@ -1,4 +1,4 @@
-<div class="p-6 grid grid-cols-2 h-full" cdkDropListGroup>
+<div class="p-6 grid grid-cols-2 h-full w-full" cdkDropListGroup>
   <!-- LEFT: WORDS -->
   <div class="w-full h-full border-r border-dashed border-gray-300 pr-2">
     <div
@@ -8,7 +8,7 @@
       [cdkDropListData]="vocabs"
       [cdkDropListConnectedTo]="definitionListIds"
     >
-      <h2 class="font-bold text-xl">Drag the word</h2>
+      <h2 class="font-bold text-xl">Kéo từ vựng</h2>
 
       @for (v of vocabs; track v.word) {
       <div
@@ -25,7 +25,7 @@
 
   <!-- RIGHT: DEFINITIONS -->
   <div class="space-y-3 pl-2">
-    <h2 class="font-bold text-xl">Drop into correct definition</h2>
+    <h2 class="font-bold text-xl">Thả vào định nghĩa</h2>
 
     @for (item of shuffledDefinitions; track item.word) {
     <div
@@ -36,7 +36,7 @@
       (cdkDropListDropped)="onDrop($event, item)"
     >
       @if (!item.placed) {
-      <div class="text-gray-500 text-sm italic">Drop word here</div>
+      <div class="text-gray-500 text-sm italic">Thả vào đây</div>
       }
 
       @if (item.placed) {
